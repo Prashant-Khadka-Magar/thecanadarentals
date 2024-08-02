@@ -1,0 +1,16 @@
+1. Youtube as a video database
+2. Socket io as a messenger
+3. ingreded google maps to show the home address physically
+4. advance filter options
+
+
+----features to learn------
+caching
+search suggestions
+skeleton
+PWA--push notification
+
+
+--learn to do session timeout--
+
+-------ADVERTISE with the fb page of the site----------
