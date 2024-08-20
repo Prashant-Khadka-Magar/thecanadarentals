@@ -1,14 +1,24 @@
+Roomies.ca
+
 1. Youtube as a video database
 2. Socket io as a messenger
 3. ingreded google maps to show the home address physically
 4. advance filter options
 
 
-----features to learn------
+dark and light mode
+
+----features to learn/apply------
+the html title changes with the page 
+paginate  |  infinite scroll
 caching
 search suggestions
 skeleton
+search history
+related rooms-recommend feed- machine learning 
 PWA--push notification
+
+in app notification- for message-ask for chatgpt
 
 
 --learn to do session timeout--
