@@ -1,7 +1,7 @@
-# TherentalsCanada
+# CanadianRentals
 
 ## Project Description
-**TherentalsCanada** is a platform where sellers can list their rooms, apartments, or basements for rent, and buyers can browse and view these listings. The application is built using the MERN stack, augmented with Tailwind CSS for styling, Shadcn for UI components, WebSocket for real-time updates, Mongoose for data modeling, and Redux for state management.
+**CanadianRentals** is a platform where sellers can list their rooms, apartments, or basements for rent, and buyers can browse and view these listings. The application is built using the MERN stack, augmented with Tailwind CSS for styling, Shadcn for UI components, WebSocket for real-time updates, Mongoose for data modeling, and Redux for state management.
 
 ## Features
 - User Authentication (Register, Login, Logout)
