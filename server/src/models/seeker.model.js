@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import { User } from "./user.model.js";
 
 const otherRoomiesSchema = new Schema({
   name: {
@@ -18,37 +19,11 @@ const otherRoomiesSchema = new Schema({
 
 const seekerSchema = new Schema(
   {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-    },
-    fullname: {
-      type: String,
-      required: true,
-    },
-    avatar: {
-      type: String,
-      required: true,
-    },
-    password: {
-      type: String,
-      required: [true, "password is required"],
-    },
     contactNumber: {
       type: Number,
       required: true,
     },
-    isEmailVerified: {
-      type: Boolean,
-    },
+
     gender: {
       type: String,
       enum: ["Male", "Female", "Other"],
@@ -79,9 +54,7 @@ const seekerSchema = new Schema(
       type: String,
       required: true,
     },
-    refreshToken: {
-      type: String,
-    },
+
     hasRoomies: {
       type: Boolean,
       required: true,
@@ -102,4 +75,5 @@ const seekerSchema = new Schema(
   },
 );
 
-export const Seeker = mongoose.model("Seeker", seekerSchema);
+
+export const Seeker =User.discriminator("Seeker", seekerSchema);

@@ -5,6 +5,8 @@ Roomies.ca
 3. ingreded google maps to show the home address physically
 4. advance filter options and sorting based on price and location
 can search for a radius of location
+forgot password
+verify the email
 
 
 ---small features--

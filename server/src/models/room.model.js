@@ -1,4 +1,6 @@
 import mongoose, { Schema } from "mongoose";
+import mongooseAggreagePaginate from "mongoose-aggregate-paginate-v2"
+
 
 const locationSchema = new Schema(
   {
@@ -100,4 +102,5 @@ const roomSchema = new Schema(
   },
 );
 
+roomSchema.plugin(mongooseAggreagePaginate)
 export const Room = mongoose.model("Room", roomSchema);

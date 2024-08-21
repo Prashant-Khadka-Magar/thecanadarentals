@@ -143,4 +143,5 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/node
 
-Features----Ideas.txt
+./Features----Ideas.txt
+.txt

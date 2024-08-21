@@ -1,37 +1,11 @@
 import mongoose, { Schema } from "mongoose";
+import { User } from "./user.model.js";
 
 const hostSchema = new Schema(
   {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-    },
-    fullname: {
-      type: String,
-      required: true,
-    },
-    avatar: {
-      type: String,
-      required: true,
-    },
-    password: {
-      type: String,
-      required: [true, "password is required"],
-    },
     contactNumber: {
       type: Number,
       required: true,
-    },
-    isEmailVerified: {
-      type: Boolean,
     },
     rooms: [
       {
@@ -39,13 +13,11 @@ const hostSchema = new Schema(
         ref: "Room",
       },
     ],
-    refreshToken: {
-      type: String,
-    },
   },
   {
     timestamps: true,
   },
 );
 
-export const Host = mongoose.model("Host", hostSchema);
+
+export const Host = User.discriminator("Host", hostSchema);
