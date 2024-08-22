@@ -18,6 +18,13 @@ app.use(express.urlencoded({extended: true, limit: "16kb"}))
 
 app.use(express.static("public"))
 
+//to read the cookie data while reciving data from user input
 app.use(cookieParser())
+
+//importing routers
+import userRouter from "./routes/user.route.js"
+
+//Routes
+app.use('/api/v1/users',userRouter)
 
 export { app };
