@@ -22,6 +22,7 @@ const userSchema = new Schema(
     avatar: {
       type: String,
       required: true,
+      default: "https://ui-avatars.com/api/?name=Canadian+Rentals",
     },
     password: {
       type: String,
@@ -29,6 +30,8 @@ const userSchema = new Schema(
     },
     isEmailVerified: {
       type: Boolean,
+      default: false,
+      required: true,
     },
     role: {
       type: String,
@@ -67,6 +70,8 @@ userSchema.methods.generateAccessToken = function () {
     { expiresIn: ACCESS_TOKEN_EXPIRY },
   );
 };
+
+
 userSchema.methods.generateRefreshToken = function () {
   //long lived token to get new access token
   return jwt.sign(
