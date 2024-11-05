@@ -32,7 +32,8 @@ const registerUser = asyncHandler(async (req, res) => {
   let avatarLocalPath = req.file?.path;
 
   if (!avatarLocalPath) {
-    avatarLocalPath=`https://ui-avatars.com/api/?name=${fullname}`
+    throw new ApiError(409, "Error getting the avatar local file path");
+   
   }
 
   const { role } = req.body;
