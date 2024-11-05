@@ -10,7 +10,6 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 const registerUser = asyncHandler(async (req, res) => {
   const { fullname, email, username, password } = req.body;
 
-
   //check if the values are undefiend or empty
   if (
     !username?.trim() ||
@@ -31,9 +30,16 @@ const registerUser = asyncHandler(async (req, res) => {
 
   let avatarLocalPath = req.file?.path;
 
-  if (!avatarLocalPath) {
-    throw new ApiError(409, "Error getting the avatar local file path");
-   
+  let avatar = null;
+  if (avatarLocalPath) {
+    //upload avatar on cloudinary
+    avatar = await uploadOnCloudinary(avatarLocalPath);
+
+    if (!avatar) {
+      throw new ApiError(500, "Error while uploading avatar");
+    }
+  } else {
+    avatar = `https://ui-avatars.com/api/?name=${fullname}`;
   }
 
   const { role } = req.body;
@@ -46,13 +52,6 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Enter a valid role");
   }
 
-  //upload avatar on cloudinary
-  const avatar = await uploadOnCloudinary(avatarLocalPath);
-
-  if (!avatar) {
-    throw new ApiError(500, "Error while uploading avatar");
-  }
-
   let newUser;
   //Upload data according to the role
   if (role === "host") {
@@ -61,7 +60,7 @@ const registerUser = asyncHandler(async (req, res) => {
     if (!contactNumber?.trim()) {
       throw new ApiError(400, "Please enter your contact");
     }
-  
+
     newUser = await Host.create({
       fullname,
       username: username.toLowerCase(),
@@ -145,9 +144,7 @@ const registerUser = asyncHandler(async (req, res) => {
       otherRoomies: otherRoomiesData,
       description,
     });
-  }
-  
-   else if (role === "admin") {
+  } else if (role === "admin") {
     newUser = Admin.create({
       fullname,
       email,
@@ -171,19 +168,14 @@ const registerUser = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, createdUser, "User registered Successfully"));
 });
 
+const loginUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
 
-const loginUser=asyncHandler(async (req,res)=>{
-
-  const {email,password}= req.body;
-
-  if(!email || !password){
+  if (!email || !password) {
     throw new ApiError(400, "Please enter all the fields");
   }
 
-
   res.send("Hello world!");
-
-  
-})
+});
 
 export { registerUser, loginUser };
